@@ -1,0 +1,37 @@
+<main>
+  <div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Listado Peliculas</h1>
+        <app-tabla-peliculas [listadoPeliculas]="listadoPeliculas" (unaPelicula)="Detalle($event)"></app-tabla-peliculas>
+        <button type="button" class="btn btn-primary">Cambiar vista</button>
+      </div>
+    </div>
+
+    <div class="row align-items">
+      <div class="col">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Para borrar</h2>
+          <p>Aqui van los controles necesarios, según la entidad y funcionalidad requerida</p>
+          <button type="button" class="btn btn-secondary">Borrar</button>
+        </div>
+      </div>
+    
+      <div class="col">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Detalle</h2>
+          <app-detalle-pelicula [unaPelicula]="unaPelicula"></app-detalle-pelicula>
+          <button type="button" class="btn btn-secondary">Limpiar</button>
+        </div>
+      </div>
+
+        <div class="col">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Modificar</h2>
+            <p>Aqui van los controles necesarios, según la entidad y funcionalidad requerida</p>
+            <button type="button" class="btn btn-secondary">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>

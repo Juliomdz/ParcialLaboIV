@@ -1,0 +1,92 @@
+<div class="container">
+  <main>
+    <div class="py-3 text-center">
+      <h2>ALTA DE ACTOR</h2>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span>Seleccione país de origen</span>
+        </h4>
+
+        <app-tabla-pais (unPais)="UnPaisSeleccionado($event)" ></app-tabla-pais>
+        <br/>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <form [formGroup]="formAlta" (ngSubmit)="GuardarActor()">
+          <h4 class="mb-3 text-primary">Datos del actor</h4>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="nombre" class="form-label nombre-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nombre"
+                required
+              />
+              <small style="color: red" *ngIf="formAlta.controls['nombre'].errors?.['required'] && formAlta.controls['nombre'].touched">
+                El nombre es requerido
+              </small>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label apellido-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="apellido"
+              />
+              <small style="color: red" *ngIf="formAlta.controls['apellido'].errors?.['required'] && formAlta.controls['apellido'].touched">
+                El apellido es requerido
+              </small>
+            </div>
+
+            <div class="col-md-3">
+              <label for="edad" class="form-label edad-label">Edad</label>
+              <input
+                type="number"
+                formControlName="edad"
+                class="form-control"
+                formControlName="edad"
+              />
+              <small style="color: red" *ngIf="formAlta.controls['edad'].errors?.['required'] && formAlta.controls['edad'].touched">
+                La edad es requerida
+              </small>
+              <small style="color: red" *ngIf="formAlta.controls['edad'].errors?.['min'] || (formAlta.controls['edad'].errors?.['max'] && formAlta.controls['edad'].touched)">
+                La edad debe ser de 18 a 99 años
+              </small>
+            </div>
+        
+            <div class="col-sm-6">
+              <label for="pais" class="form-label pais-label">Pais</label>
+              <div style="display: flex">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="pais"
+                  [ngModel]="paisSeleccionado"
+                  readonly
+                  value="paisSeleccionado"
+                />
+              </div>
+              <small style="color: red" *ngIf="formAlta.controls['pais'].errors?.['required'] && formAlta.controls['pais'].touched">
+                El pais es requerido
+              </small>
+            </div>
+          </div>
+
+          <hr class="my-4"/>
+          <button class="w-100 btn btn-primary btn-lg" [disabled]="formAlta.invalid" type="submit">
+            Registrar Actor
+          </button>
+          <div>
+            <button class="w-100 btn btn-primary btn-lg volver" [routerLink]="['/busqueda']">
+              Volver
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,13 @@
+<h2>Lista de países</h2>
+<div class="container">
+  <div *ngIf="datos.length > 0">
+    <ul>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+            <button *ngFor="let pais of datos" class="btn" (click)="SeleccionarPais(pais.name.common)">
+              <img [src]="pais.flags.svg" alt="Bandera de {{ pais.name.common }}" width="20" height="20">
+              {{ pais.name.common }} ({{ pais.cca2 }})
+            </button>
+        </div>
+    </ul>
+  </div>
+</div>

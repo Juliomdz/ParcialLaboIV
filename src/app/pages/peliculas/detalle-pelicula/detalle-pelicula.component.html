@@ -1,0 +1,9 @@
+<div *ngIf="unaPelicula">
+    <div>
+        <img [src]="unaPelicula.foto" width="150px" height="150px"><br>
+        Nombre = {{unaPelicula.nombre}}<br>
+        Tipo = {{unaPelicula.tipo}}<br>
+        Fecha de Estreno = {{unaPelicula.fechaEstreno | date: 'dd/MMMM/yyy'}}<br>
+        Cantidad de Publico = {{unaPelicula.cantidadPublico}}<br>
+    </div>
+</div>
