@@ -98,7 +98,7 @@ export class RegisterComponent {
           text: '¡Bienvenido!',
           confirmButtonText: 'OK'
         }).then(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/aceptarTerminos']);
         });
       }
     } catch (error: any) {

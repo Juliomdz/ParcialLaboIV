@@ -79,6 +79,20 @@ export class AuthService {
     }
   }
 
+  async register2(email: string) {
+    
+    try {
+      let currentUser$ = this.getCurrentUser();
+      this.loggedIn = true;
+
+      this.dataBase.guardarTyC(email);
+  
+    } catch (error) {
+      console.error('Error al registrar el usuario:', error);
+      throw error;
+    }
+  }
+
   setAuthToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }

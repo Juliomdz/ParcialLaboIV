@@ -9,7 +9,7 @@ import { ListadoPaisesComponent } from '../../listado-paises/listado-paises.comp
 import { NumberDirective } from '../../validadores/numero.directive';
 import { LetterDirective } from '../../validadores/letras.directive';
 import { Observable } from 'rxjs';
-import { CanComponentDeactivate } from '../../guards/can-component-deactivate.interface';
+import { CanComponentDeactivate } from '../../guards/can-component-deactivate';
 import { AuthService } from '../../services/auth.service';
 import { User } from 'firebase/auth';
 

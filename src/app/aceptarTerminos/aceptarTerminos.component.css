@@ -1,0 +1,19 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(to top, transparent 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0) 95%), url('../../assets/fondos/bienvenido.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-body h2 {
+    font-size: 2rem; /* Tamaño de fuente más grande */
+  }
+  
+  .card-body p {
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .form-check-label {
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color de texto negro */
+  }

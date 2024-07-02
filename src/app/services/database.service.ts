@@ -39,6 +39,25 @@ export class DatabaseService {
       });
     }
 
+    guardarTyC(email:any)
+    {
+    const firebaseCollection = 'TyC';
+    const loginData = {
+      Usuario: email,
+      aceptoTerminos:true
+    };
+  
+    const collectionRef = collection(this.firestore, firebaseCollection);
+  
+    setDoc(doc(collectionRef), loginData)
+      .then(() => {
+        // console.log('Inicio de sesión guardado en Firestore');
+      })
+      .catch((error: any) => {
+        // console.error('Error al guardar en Firestore: ', error);
+      });
+    }
+
     agregar(coleccion: string, data: any) {
       const ref = collection(this.firestore, coleccion);
     

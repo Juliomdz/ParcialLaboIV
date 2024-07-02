@@ -1,0 +1,58 @@
+<body>
+  
+
+  <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-info text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+    
+                <div class="mb-md-5 mt-md-4 pb-5">
+    
+                  <h2 class="fw-bold mb-2 text-uppercase">Acepte los terminos y condiciones</h2>
+    
+                  <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+                    
+
+                    <label class="form-check-label text-black-50" for="aceptoTerminos">
+                      Términos y condiciones
+                    </label>
+                    <p class="text-green-5 mb-4">
+                      Usted debe aceptar estos terminos y condiciones para proseguir, consectetur adipiscing elit. Nullam ac libero sed est ornare molestie.
+                      Maecenas vitae nisi vitae nisl lobortis consequat. Donec volutpat eros ut risus finibus, nec
+                      consectetur orci pellentesque.
+                    </p>
+                    <div class="form-check mb-4">
+                      <input class="form-check-input" type="checkbox" formControlName="aceptoTerminos" id="aceptoTerminos">
+                      <label class="form-check-label text-black-80" for="aceptoTerminos">
+                        Acepto los términos y condiciones
+                      </label>
+                    </div>
+  
+
+    
+                  <!-- <div data-mdb-input-init class="form-outline form-white mb-4">
+                    <input type="text" style="text-align: center;" [(ngModel)]="username" maxlength="35" placeholder="Username" id="registerUsername" class="form-control form-control-lg" />
+                  </div>
+     -->
+                  <div data-mdb-input-init class="form-outline form-white mb-4">
+                    <input type="email" style="text-align: center;" formControlName="email" maxlength="35" placeholder="Email" id="registerEmail" class="form-control form-control-lg" />
+                  </div>
+      
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" [disabled]="formRegister.invalid">Validar Mail</button>
+                  <!-- <button (click)="register()" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Registrarse</button> -->
+    
+                </form>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+    
+  
+  

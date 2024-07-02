@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { adminGuard } from './guards/admin.guard';
 import { infoGuard } from './guards/info.guard';
 import { loggedGuard } from './guards/logged.guard';
+import { CanDeactivateGuard } from './guards/can-component-deactivate';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,12 @@ export const routes: Routes = [
         path: 'home/lista',
         loadComponent: () => import('./home/lista-elementos/lista.component').then(m => m.ListaComponent),
         canActivate: [loggedGuard]
+    },
+    {
+        path: 'home/aceptarTerminos',
+        loadComponent: () => import('./aceptarTerminos/aceptarTerminos.component').then(m => m.AceptarTerminos),
+        canActivate: [loggedGuard],
+        canDeactivate: [CanDeactivateGuard]
     },
     {
         path: 'home/salen',
