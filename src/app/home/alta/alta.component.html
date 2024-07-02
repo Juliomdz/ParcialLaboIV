@@ -1,0 +1,132 @@
+
+<body class="vh-10 gradient-custom">
+  <div class="background-image"> 
+  </div>
+  <div class="container">
+    <div class="fab-container">
+      <a class="fab" (click)="logout()">
+        <span *ngIf="currentUser$ | async as user">
+          <span *ngIf="user.photoURL">
+            <img [src]="user.photoURL" alt="Foto de perfil de usuario" class="user-photo">
+          </span>
+          <span *ngIf="!user.photoURL">
+            <i class="fas fa-user-circle"></i>
+          </span>
+        </span>
+      </a>
+    </div>
+    <div class="section-title">
+      <h2>Alta de Repartidores</h2>
+    </div>
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Paises</span>
+                <span class="badge bg-primary rounded-pill">{{ listaPaises.length }}</span>
+              </h4>
+              <ul class="list-group mb-3">
+                <app-listado-paises class="col" (paisEmitido)="getCountries($event)"
+                  [listaPaises]="listaPaises">
+                </app-listado-paises>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="mb-3">Datos personales</h4>
+              <form [formGroup]="formAlta" class="needs-validation" novalidate>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control" formControlName="dni" id="dni" placeholder="" minlength="7" maxlength="8" numbersOnly required 
+                           [class.campo-con-error]="getValue('dni').invalid && (getValue('dni').touched || getValue('dni').dirty)">
+                    <div class="errorMessage" *ngIf=" getValue('dni').invalid && (getValue('dni').touched || getValue('dni').dirty)">
+                      Por favor, ingrese su DNI. Deben ser 7 números sin punto como mínimo y como máximo 8.
+                    </div>
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="" lettersOnly required
+                            [class.campo-con-error]="getValue('nombre').invalid && (getValue('nombre').touched || getValue('nombre').dirty)">
+                    <div class="errorMessage" *ngIf="getValue('nombre')?.invalid && (getValue('nombre').touched || getValue('nombre').dirty)">
+                      Por favor, ingrese su nombre.
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+        
+                  <div class="col-md-3">
+                    <label for="zip" class="form-label">Edad</label>
+                    <input type="text" class="form-control" formControlName="edad" id="edad" placeholder="" minlength="2" maxlength="2" numbersOnly required 
+                              [class.campo-con-error]="getValue('edad').invalid && (getValue('edad').touched || getValue('edad').dirty)">
+                    <div class="errorMessage" *ngIf="getValue('edad')?.invalid && (getValue('edad').touched || getValue('edad').dirty)">
+                      Por favor, ingrese su edad. Debe ser mayor de 18.
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Capacidad de Transporte</label>
+                    <input type="text" class="form-control" formControlName="capacidadTransporte" id="capacidadTransporte" placeholder="en unidades" minlength="1" maxlength="3" numbersOnly required
+                                [class.campo-con-error]="getValue('capacidadTransporte').invalid && (getValue('capacidadTransporte').touched || getValue('capacidadTransporte').dirty)">
+                    <div class="errorMessage" *ngIf="getValue('capacidadTransporte')?.invalid && (getValue('capacidadTransporte').touched || getValue('capacidadTransporte').dirty)">
+                      Por favor, introduzca la capacidad de transporte(debe ser mayor 0). La capacidad máxima es de 500.
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label for="unidadPropia" class="form-label">¿Tiene unidad propia?</label>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" formControlName="unidadPropia" id="unidadPropia">
+                      <label class="form-check-label" for="unidadPropia"></label>
+                    </div>
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label for="country" class="form-label">Continente</label>
+                    <select class="form-select" formControlName="continente" id="continente" required (change)="updatePaises()"
+                                [class.campo-con-error]="getValue('continente').invalid && (getValue('continente').touched || getValue('continente').dirty)">
+                      <option value="africa">Africa</option>
+                      <option value="europe">Europa</option>
+                    </select>
+                    <div class="errorMessage" *ngIf="getValue('continente')?.invalid && (getValue('continente').touched || getValue('continente').dirty)">
+                      Por favor, seleccione un continente.
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+        
+                  <div class="col-md-12">
+                    <label for="state" class="form-label">Pais origen</label>
+                    <input type="text" class="form-control" formControlName="paisOrigen" id="paisOrigen" placeholder="" [(ngModel)]="nombrePais" required [readonly]="true"
+                           [class.campo-con-error]="getValue('paisOrigen').invalid && (getValue('paisOrigen').touched || getValue('paisOrigen').dirty)">
+                    <div class="errorMessage" *ngIf="getValue('paisOrigen')?.invalid && (getValue('paisOrigen').touched || getValue('paisOrigen').dirty)">
+                      Por favor, seleccione un país.
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <hr class="my-4">
+        
+                <button class="w-100 btn btn-primary btn-lg" type="button" (click)="onSubmit()">Guardar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <footer class=" text-body-secondary text-center text-small">
+    <input type="button" [value]="btnVolver" [class]="['back-button']" (click)="onClick($event)" />
+      <!-- <p class="mb-1">&copy; 2017–2024 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul> -->
+    </footer>
+  </div>
+</body>

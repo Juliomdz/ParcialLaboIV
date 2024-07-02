@@ -1,0 +1,98 @@
+<body class="vh-20 gradient-custom">
+  <div class="background-image"> 
+  </div>
+  <div class="fab-container">
+    <a class="fab" (click)="toggleDropdown()">
+      <span *ngIf="currentUser$ | async as user">
+        <span *ngIf="user.photoURL">
+          <img [src]="user.photoURL" alt="Foto de perfil de usuario" class="user-photo">
+        </span>
+        <span *ngIf="!user.photoURL">
+          <i class="fas fa-user-circle"></i>
+        </span>
+      </span>
+    </a>
+    <div class="dropdown-content" *ngIf="isDropdownOpen">
+      <button class="logout-button" (click)="logout()">
+        <i class="fa solid fa-power-off"></i> Cerrar Sesión
+      </button>
+    </div>
+  </div>
+  
+
+<div class="container py-3">
+    <header>
+
+      <div class="container text-center">
+        <span class="fs-4">Listado de helados</span>
+      </div>
+    
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <app-listado-elementos [listaElementos]="listaElementos" (crearElementoEmit)="crearElemVisual()" (modificarElementoEmit)="modificarElemento($event)"
+        (borrarElementoEmit)="borrarElemento($event)"></app-listado-elementos>
+      </div>
+
+    </header>
+  
+    <main>
+
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center justify-content-center">
+
+        <div class="col" *ngIf="crear">
+          <div class="card mb-4 rounded-3 shadow-sm">
+
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Crear</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card-body">
+                <app-crear-elemento (elementoCreado)="crearElemento($event)"></app-crear-elemento>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" *ngIf="modificar">
+          <div class="card mb-4 rounded-3 shadow-sm">
+
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Modificar</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="card-body">
+                <app-modificar-elemento [elemento]="elementoAModificar" (elementoCreado)="recibirElementoModificado($event)"></app-modificar-elemento>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col" *ngIf="eliminar">
+
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Eliminar</h4>
+            </div>
+
+              <div class="card-body">
+                <div class="card-body">
+                  <app-borrar-elemento [elemento]="elementoAEliminar" (elementoCreado)="recibirElementoAEliminar($event)"></app-borrar-elemento>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="pt-4 my-md-1 pt-md-1 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+          <input type="button" [value]="btnVolver" [class]="['back-button']" (click)="onClick($event)" />
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>

@@ -1,0 +1,77 @@
+  <body class="vh-100 gradient-custom">
+    <div class="background-image"> 
+    </div>
+    <div class="fab-container">
+      <a class="fab" (click)="logout()">
+        <span *ngIf="currentUser$ | async as user">
+          <span *ngIf="user.photoURL">
+            <img [src]="user.photoURL" alt="Foto de perfil de usuario" class="user-photo">
+          </span>
+          <span *ngIf="!user.photoURL">
+            <i class="fas fa-user-circle"></i>
+          </span>
+        </span>
+      </a>
+    </div>
+
+  
+<main>
+<div class="container py-4">
+  <header class="pb-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+      <span class="fs-4">Listado de repartidores</span>
+    </a>
+  </header>
+
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <h1 class="display-5 fw-bold"></h1>
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Pais de Origen</th>
+                <th scope="col">Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elemento of listaElementos; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ elemento.nombre }}</td>
+                <td>{{ elemento.dni }}</td>
+                <td>{{ elemento.paisOrigen }}</td>
+                    <td><button type="button" class="btn btn-primary" (click)="getElemento(elemento)">
+                        +
+                    </button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <div class="row align-items-md-stretch">
+
+    <div class="col-md-6">
+      <div class="h-100 p-5 text-bg-dark rounded-3">
+        <h2>Detalles</h2>
+        <app-detalle-elemento class="col-md-4" [inputItemSeleccionado]="elemento" *ngIf="elemento">
+        </app-detalle-elemento>
+
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Pais</h2>
+        <app-detalle-pais class="col-md-4" [inputItemSeleccionado]="elemento" *ngIf="elemento">
+        </app-detalle-pais>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="pt-3 mt-4 text-body-secondary border-top">
+    <input type="button" [value]="btnVolver" [class]="['back-button']" (click)="onClick($event)" />
+  </footer>
+</div>

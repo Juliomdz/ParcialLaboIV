@@ -1,0 +1,100 @@
+/* Estilos para el header */
+header {
+    background-color: #308f0083;
+    padding: 10px 0;
+    justify-content: center;
+    text-align: center; /* Centra el texto dentro del header */
+    display: flex;
+}
+
+/* Estilos para la navegación */
+.navbar {
+    background-color: #308f0083;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    box-shadow: 0 8px 32px 0 rgba(192, 117, 217, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    z-index: 10;
+    color: rgba(127, 70, 5, 0.738);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1rem; /* Ajusta el tamaño de fuente según tu preferencia */
+    margin: 0 auto; /* Centra la tarjeta horizontalmente */
+}
+.container-header {
+    max-width: 800px;
+    background-color: #308f0083;
+    color: rgb(244, 244, 244);
+    display: flex;
+    justify-content: center;
+    margin: auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 800px;
+    margin: auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Estilos para la tarjeta */
+.card {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 680px;
+    background: rgba(255, 203, 255, 0.834);
+    box-shadow: 0 8px 32px 0 rgba(192, 117, 217, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    z-index: 10;
+    color: rgba(36, 31, 0, 0.738);
+    font-size: 1.2rem; /* Ajusta el tamaño de fuente según tu preferencia */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0 auto; /* Centra la tarjeta horizontalmente */
+}
+
+.card-img-top {
+    border-radius: 20%;
+    width: 18rem;
+    display: block;
+    margin: 0 auto; /* Centra la imagen dentro de la tarjeta */
+}
+
+.link {
+    color: aqua;
+}
+
+.card-title {
+    font-size: larger;
+}
+
+/* Estilos para el fondo de la imagen */
+.background-image {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, transparent 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0) 95%), url('../../assets/fondos/bienvenido.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Estilos para los botones */
+.botones-color {
+    width: 200px; /* Ajusta el ancho según tu diseño */
+    background-color: #004f11;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 1rem;
+}
+
+.botones-color:hover {
+    background-color: #148700;
+}

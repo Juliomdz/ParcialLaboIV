@@ -1,0 +1,54 @@
+
+<body class="vh-50 gradient-custom">
+  <div class="background-image"> 
+  </div>
+<section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+  <div class="fab-container">
+    <a class="fab" (click)="logout()">
+      <span *ngIf="currentUser$ | async as user">
+        <span *ngIf="user.photoURL">
+          <img [src]="user.photoURL" alt="Foto de perfil de usuario" class="user-photo">
+        </span>
+        <span *ngIf="!user.photoURL">
+          <i class="fas fa-user-circle"></i>
+        </span>
+      </span>
+    </a>
+  </div>
+
+        <div class="section-title">
+          <h2>Parcial Laboratorio IV</h2>
+          <p>Tienda de helados internacional de la UTN.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" (click)="altaElemento()" data-aos="zoom-in" data-aos-delay="100">
+              <div class="selector-box">
+                  <div class="icon"><i class="fa-regular fa-user"></i></div>
+                  <h4>Alta repartidor</h4>
+                  <p>Esta opción sirve para generar un alta de un repartidor.</p>
+              </div>
+          </div>
+      
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" (click)="detalleElemento()" data-aos="zoom-in" data-aos-delay="200">
+              <div class="selector-box">
+                  <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                  <h4>Repartidor detalles</h4>
+                  <p>Esta opción sirve para visualizar el listado de los repartidores.</p>
+              </div>
+          </div>
+      
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" (click)="altaElemento2()" data-aos="zoom-in" data-aos-delay="300">
+              <div class="selector-box">
+                  <div class="icon"><i class="fa-solid fa-ice-cream"></i></div>
+                  <h4>Salen Helados</h4>
+                  <p>Esta opción sirve para crear, modificar y/o borrar elementos de tipo helado. Recuerda que únicamente usuarios con perfil <strong>administrador</strong> pueden ingresar.</p>
+              </div>
+          </div>
+      </div>
+
+      </div>
+    </section>
+</body>

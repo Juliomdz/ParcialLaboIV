@@ -1,0 +1,43 @@
+<div class="background">
+    <div class="container">
+        <div class="col">
+          
+          <form class="needs-validation" novalidate>
+  
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input [(ngModel)]="elemento.nombre" *ngIf="elemento" type="text" required minlength="4" maxlength="12" class="form-control" name="nombre" placeholder="" disabled="true">
+              <input *ngIf="!elemento" type="text" class="form-control" name="nombre" placeholder="" disabled>
+            </div>
+  
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select [(ngModel)]="tipo" *ngIf="elemento" class="form-select" name="tipo" required disabled>
+                <option value="agua">Agua</option>
+                <option value="crema">Crema</option>
+              </select>
+              <select *ngIf="!elemento" class="form-select" name="tipo" required disabled>
+              </select>
+            </div>
+  
+            <div class="mb-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input [(ngModel)]="precio" *ngIf="elemento" type="number" required class="form-control" name="precio" placeholder="$" disabled>
+              <input *ngIf="!elemento" type="text" class="form-control" name="nombre" placeholder="$" disabled>
+              
+            </div>
+  
+            <div class="mb-3">
+              <label for="peso" class="form-label">Peso</label>
+              <input [(ngModel)]="peso" *ngIf="elemento" type="number" required min="500" max="1000" class="form-control" name="stock" placeholder="en gramos" disabled>
+              <input *ngIf="!elemento" type="text" class="form-control" name="nombre" placeholder="en gramos" disabled>
+            </div>
+  
+            <button class="btn btn-danger btn-lg btn-block" type="button" (click)="borrarElemento()">Eliminar</button>
+  
+            <p class="mt-2 text-success" *ngIf="correcto">Se eliminó correctamente</p>
+          </form>
+        </div>
+    </div>
+  </div>
+  

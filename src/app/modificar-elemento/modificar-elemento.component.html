@@ -1,0 +1,49 @@
+<div class="background">
+    <div class="container">
+        <div class="col">
+          <form class="needs-validation" novalidate>
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input [(ngModel)]="elemento.nombre" *ngIf="elemento" type="text" required minlength="4" maxlength="12" class="form-control" name="nombre" placeholder="" disabled="true">
+                <input *ngIf="!elemento" type="text" class="form-control" name="nombre" placeholder="" disabled>
+              </div>
+  
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select [(ngModel)]="tipo" *ngIf="elemento" class="form-select" name="tipo" required>
+                <option value="agua">Agua</option>
+                <option value="crema">Crema</option>
+              </select>
+              <select *ngIf="!elemento" class="form-select" name="tipo" required disabled>
+              </select>
+            </div>
+  
+            <div class="mb-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input [(ngModel)]="precio" *ngIf="elemento" type="number" required class="form-control" name="precio" placeholder="$"
+              [class.is-invalid]="precio && precio < 100">
+              <div *ngIf="precio && precio < 100" class="invalid-feedback">
+                El precio debe ser mayor o igual a 100.
+              </div>
+              <input *ngIf="!elemento" type="text" class="form-control" name="nombre" placeholder="$" disabled>
+            </div>
+  
+            <div class="mb-3">
+              <label for="peso" class="form-label">Peso</label>
+              <input [(ngModel)]="peso" *ngIf="elemento" type="number" required min="250" max="1000" class="form-control" name="stock" placeholder="en gramos"
+              [class.is-invalid]="peso && (peso < 250 || peso > 1000)">
+              <div *ngIf="peso && (peso < 250 || peso > 1000)" class="invalid-feedback">
+                El peso debe estar entre 250 y 1000 gramos.
+              </div>
+              <input *ngIf="!elemento" type="text" class="form-control" name="nombre" placeholder="en gramos" disabled>
+            </div>
+  
+            <button class="btn btn-primary btn-lg btn-block" type="button" (click)="modificarElemento()">Modificar</button>
+            <p class="mt-2 text-success" *ngIf="correcto">Se modificó correctamente</p>
+          </form>
+
+      </div>
+    </div>
+  </div>
+  

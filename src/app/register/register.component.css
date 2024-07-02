@@ -1,0 +1,6 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(to top, transparent 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0) 95%), url('../../assets/fondos/bienvenido.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

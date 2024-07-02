@@ -1,0 +1,46 @@
+<div class="background">
+    <div class="container">
+        <div class="col">
+          <form class="needs-validation" novalidate>
+            
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+                <input [(ngModel)]="nombre" type="text" required minlength="4" maxlength="25" class="form-control" name="nombre" placeholder=""
+                [class.is-invalid]="nombre && (nombre.length < 4 || nombre.length > 25)">
+                <div *ngIf="nombre && (nombre.length < 4 || nombre.length > 25)" class="invalid-feedback">
+                  El nombre debe tener entre 4 y 25 caracteres.
+                </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select [(ngModel)]="tipo" class="form-select" name="tipo" required>
+                <option value="agua">Agua</option>
+                <option value="crema">Crema</option>
+              </select>
+            </div>
+  
+            <div class="mb-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input [(ngModel)]="precio" type="number" required min="100" class="form-control" name="precio" placeholder="$"
+              [class.is-invalid]="precio && precio < 100">
+              <div *ngIf="precio && precio < 100" class="invalid-feedback">
+                El precio debe ser mayor o igual a 100.
+              </div>
+          </div>
+
+            <div class="mb-3">
+              <label for="peso" class="form-label">Peso</label>
+              <input [(ngModel)]="peso" type="number" required min="250" max="1000" class="form-control" name="peso" placeholder="en gramos"
+              [class.is-invalid]="peso && (peso < 250 || peso > 1000)">
+              <div *ngIf="peso && (peso < 250 || peso > 1000)" class="invalid-feedback">
+                El peso debe estar entre 250 y 1000 gramos.
+              </div>
+          </div>
+            <button class="btn btn-primary btn-lg btn-block" type="button" (click)="crearElemento()">Crear</button>
+          </form>
+          
+      </div>
+    </div>
+  </div>
+  
